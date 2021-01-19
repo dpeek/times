@@ -1,5 +1,164 @@
+body,
+html {
+  height: 100%;
+}
+
 .App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #202020;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.stats {
+  color: white;
+}
+
+.table {
+  padding: 15px 20px;
+  display: inline-block;
+  font-size: 24px;
+  color: grey;
+  cursor: pointer;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.table.active {
+  color: #202020;
+  background-color: white;
+}
+
+.table:hover {
+  color: white;
+}
+
+.table.active:hover {
+  color: #202020;
+}
+
+.reset {
+  border: none;
+  background: none;
+  font-size: 24px;
+  color: grey;
+  cursor: pointer;
+}
+
+.reset:focus {
+  outline: none;
+}
+
+.reset:hover {
+  color: white;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.answers {
+  margin-top: 40px;
+  display: flex;
+}
+
+.row {
+  display: flex;
+}
+
+.row + .row {
+  margin-top: -1px;
+}
+
+.answer {
+  position: relative;
+  padding: 20px 0px;
+  border-radius: 10px;
+  font-size: 40px;
+  color: white;
+  border: solid grey 1px;
+  cursor: pointer;
   text-align: center;
+  width: 100px;
+}
+
+.button {
+  position: relative;
+  padding: 20px 0px;
+  font-size: 40px;
+  color: white;
+  border: solid grey 1px;
+  cursor: pointer;
+  text-align: center;
+  width: 100px;
+}
+
+.button .label {
+  pointer-events: none;
+}
+
+.button.active {
+  background-color: #422;
+}
+
+.button + .button {
+  margin-left: -1px;
+}
+
+.answer + .answer {
+  margin-left: 10px;
+}
+
+.answer:active {
+  background-color: #422;
+}
+
+.answer + .answer {
+  margin-left: 10px;
+}
+
+.answer.attempt {
+  color: red;
+}
+
+.answer .key {
+  font-size: 14px;
+  color: grey;
+  position: absolute;
+  bottom: 5px;
+  right: 8px;
+}
+
+.results {
+  width: 100%;
+  bottom: 0px;
+  position: absolute;
+}
+
+.result {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 0px 4px;
+}
+
+.result.correct {
+  background-color: green;
+}
+
+.result.incorrect {
+  background-color: red;
+}
+
+.card {
+  color: white;
+  display: inline-block;
+  font-size: 140px;
+  font-weight: bold;
 }
 
 .App-logo {
