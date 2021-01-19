@@ -97,6 +97,7 @@ function App() {
 
   const [results] = useState(loadResults());
   const [question, setQuestion] = useState(null);
+  if (question === null) setQuestion(getNextQuestion(results));
 
   const [input, setInput] = useState("");
   const [attempts, setAttempts] = useState(0);
@@ -109,9 +110,8 @@ function App() {
 
   const showNext = () => {
     setAttempts(0);
-    setStartTime(new Date().getTime());
-    let nextQuestion = getNextQuestion(results);
-    setQuestion(nextQuestion);
+    setStartTime(getTime());
+    setQuestion(getNextQuestion(results));
   };
 
   const onKeyDown = ({ key }) => {
@@ -122,16 +122,20 @@ function App() {
   };
 
   useEffect(() => {
+    if (ref.current) {
+      disableBodyScroll(ref.current);
+    }
+
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   });
 
-  useEffect(() => {
-    showNext();
-    if (ref.current) {
-      disableBodyScroll(ref.current);
-    }
-  }, [ref]);
+  // useEffect(() => {
+  //   showNext();
+  //   // if (ref.current) {
+  //   //   disableBodyScroll(ref.current);
+  //   // }
+  // }, []);
 
   // const checkAnswer = (num) => {
   //   if (num < 1 || num > 4) return;
@@ -289,7 +293,7 @@ function App() {
         </button>
         <button
           className="reset"
-          onClick={() => (window.location = window.location)}
+          onClick={() => (window.location = String(window.location))}
         >
           Refresh
         </button>
